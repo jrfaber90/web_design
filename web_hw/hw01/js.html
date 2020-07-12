@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Js Example - HW01</title>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        function purchase() {
+            var message = "Order\n" + "----------------------" + "\n";
+            var subTotal = 0.0;
+            var total = 0.0;
+            var ddSelected[] = document.getElementById("ddBooks");
+            for (i = 0; i < ddSelected.length; i++) {
+                if (ddSelected[i].checked) {
+                    message += ddSelected[i].value + " - " + dd.Selected(i).text + "\n";
+                    subTotal += ddSelected[i].value;
+                }
+            }
+            var customBook = document.getElementById("txtBook").value;
+            var customBookPrice = parseFloat(document.getElementById("txtPrice").value);
+            subTotal += customBookPrice;
+            message += "$" + customBookPrice + " - " + customBook + "\n";
+            var custType[] = document.getElementsByName("radType");
+            if (custType[0].checked) {
+                message += "General Customer\n";
+            }
+            if (custType[1].checked) {
+                message += "Government Customer\n";
+            }
+            var chkOptions[] = document.getElementByName("Order");
+            if (chkOptions[0].checked) {
+                subTotal += chkOptions[0].value;
+                message += chkOption[0].value + "Rush Order\n";
+            }
+            if (chkOptions[1].checked) {
+                subTotal += chkOptions[1].value;
+                message += "Gift wrap\n"
+            }
+            var shipTo[] = document.getElementByName("ShipTo");
+            for (i = 0; i < shipTo.length; i++) {
+                if (shipTo[i].checked) {
+                    subTotal += shipTo[i].value;
+                    message += shipTo[i].value + " - " + "Ship to " + shipTo[i].text + "\n";
+                }
+            }
+
+            message += "----------------------\n";
+            
+            if (custType[1].checked) {
+                message += "Sub Total:" + "$" + subTotal + "\n";
+                message += "Discount (10%): " + subTotal * .10 + "\n";
+                total == subTotal - (subTotal * .10);
+                message += "Total: $" + total;
+            }
+            else {
+                message += "Total: $" + subTotal;
+            }
+            var txaResult = document.getElementById("message");
+            txaResult.value = message;
+            document.getElementById("divMsg").innerHTML = message;
+            return;
+
+        }
+
+    </script>
+</head>
+<body>
+    <form id="bookOrder">
+    <p>
+        <a href="default.html">HW 1</a> &gt; JavaScript Example</p>
+    <p>
+        &nbsp;</p>
+    <h2>Book Order Form</h2>
+
+    <table class="auto-style1">
+        <tr>
+            <td class="auto-style5">Select Books<br />
+                and/ or Supply<br />
+                Book title and<br />
+                price</td>
+            <td class="auto-style7">&nbsp;
+                <select size="4" id="ddBooks" multiple name="D1">
+                    <option value="20.00">Walden Pond</option>
+                    <option value="15.00">Zen and the Art...</option>
+                    <option value="8.00">The Razor's Edge</option>
+                    <option value="15.00">The Poisonwood Bible</option>
+                    <option value="10.00">Wuthering Heights</option>
+                </select>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style5">&nbsp;</td>
+            <td colspan="2">Book
+                <input type="text" id="txtBook" />
+            Price<input type="text" id="txtPrice" /></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">Options</td>
+            <td class="auto-style8">
+                <input type="checkbox" name="Order" value="10.00" />Rush Order
+                <input type="checkbox" name="Order" value="5.00" />Gift Wrap
+            </td>
+            <td class="auto-style12"></td>
+        </tr>
+        <tr>
+            <td class="auto-style5">Customer Type</td>
+            <td class="auto-style7">&nbsp;
+                <input type="radio" value="1" name="radType" id="t1" />General
+                <input type="radio" value=".10" name="radType" id="t2" />Government
+
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style5">Ship To</td>
+            <td class="auto-style7">&nbsp;
+                <select size="1" id="ddShipTo" name="ShipTo">
+                    <option value="5.00">NY</option>
+                    <option value="7.00">CA</option>
+                    <option value="3.00">SC</option>
+                </select>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">
+            <input type="button" value="Purchase" onclick="purchase();" />
+            </td>
+            <td class="auto-style3" colspan="2">Purchase Details:
+                <p><textarea id="message" rows="7" cols="50"></textarea></p>
+                <div id="divMsg">
+
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

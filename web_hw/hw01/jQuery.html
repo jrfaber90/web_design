@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HW01 - jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#process").click(function () {
+                var subTotal = 0.00;
+                var selBooks = [];
+                $("input[name='ddBooks']:checked").each(function () {
+                    selBooks.push($(this).val());
+                });
+                var options = [];
+                $("input[name='order':checked").each(function () {
+                    option.push($(this).val());
+                });
+
+                var type = [];
+                $("input[name='radType']:checked").each(function () {
+                    type.push($(this).val);
+                });
+                var ship = [];
+                $("input[name='ShipTo']:checked").each(function () {
+                    ship.push($(this).val);
+                });
+
+                var custBook = $("#txtBook").val();
+                var custPrice = $("#txtPrice").val();
+
+                var message = "Order\n" + "--------------------\n";
+                for (i = 0; i < selBooks.length; i++)
+                    message += selBooks[i].value + " - " + selBooks[i].text + (i < selBooks.length - 1 ? "\n" : "");
+                if (custPrice != "") {
+                    message += custPrice + " - " + custBook + "\n";
+                }
+
+                message += type[0].value + "\n";
+                for (i = 0; i < options.length; i++) {
+                    message += "$" + options[i].value + " - " + options[i].text + "\n";
+                }
+
+                message += "$" + ship[0].value + " - " + ship[0].text + "\n";
+
+                message += "--------------------\n";
+                if (radType[0].value == "General Customer") {
+                    for (i = 0; i < selBooks.length; i++)
+                        subTotal += selBooks[i].value;
+                    for (i = 0; i < options.length; i++)
+                        subTotal += options[i].value;
+                    subTotal += ship[0].value;
+                    subTotal += parseFloat$("#txtPrice").val();
+                    message += "Total: $" + subTotal;
+
+                }
+                else {
+                    for (i = 0; i < selBooks.length; i++)
+                        subTotal += selBooks[i].value;
+                    for (i = 0; i < options.length; i++)
+                        subTotal += options[i].value;
+                    subTotal += ship[0].value;
+                    subTotal += parseFloat$("#txtPrice").val();
+                    message += "Sub Total: $" + subTotal + "\n";
+                    message += "Discount (10%): $" + subTotal * .10 + "\n";
+                    message += "Total: $" + subTotal - (subTotal * .10);
+                }
+
+                $("#message").val(message);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <form id="bookOrder">
+    <p>
+        <a href="default.html">HW 1</a> &gt; JavaScript Example</p>
+    <p>
+        &nbsp;</p>
+    <h2>Book Order Form</h2>
+
+    <table class="auto-style1">
+        <tr>
+            <td class="auto-style5">Select Books<br />
+                and/ or Supply<br />
+                Book title and<br />
+                price</td>
+            <td class="auto-style7">&nbsp;
+                <select size="4" id="ddBooks" multiple name="ddBooks">
+                    <option value="20.00">Walden Pond</option>
+                    <option value="15.00">Zen and the Art...</option>
+                    <option value="8.00">The Razor's Edge</option>
+                    <option value="15.00">The Poisonwood Bible</option>
+                    <option value="10.00">Wuthering Heights</option>
+                </select>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style5">&nbsp;</td>
+            <td colspan="2">Book
+                <input type="text" id="txtBook" />
+            Price<input type="text" id="txtPrice" /></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">Options</td>
+            <td class="auto-style8">
+                <input type="checkbox" name="order" value="10.00" />Rush Order
+                <input type="checkbox" name="order" value="5.00" />Gift Wrap
+            </td>
+            <td class="auto-style12"></td>
+        </tr>
+        <tr>
+            <td class="auto-style5">Customer Type</td>
+            <td class="auto-style7">&nbsp;
+                <input type="radio" value="General Customer" name="radType" id="t1" />General
+                <input type="radio" value="Government Customer" name="radType" id="t2" />Government
+
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style5">Ship To</td>
+            <td class="auto-style7">&nbsp;
+                <select size="1" id="ddShipTo" name="ShipTo">
+                    <option value="5.00">NY</option>
+                    <option value="7.00">CA</option>
+                    <option value="3.00">SC</option>
+                </select>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">
+            <input type="button" value="Purchase" id="process"; />
+            </td>
+            <td class="auto-style3" colspan="2">Purchase Details:<br />
+                <p><textarea id="message" rows="7" cols="50"></textarea></p>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

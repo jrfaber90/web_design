@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<workoutPlan>
+  <workout>
+    <exercise>Bench Press</exercise>
+    <sets>15x12x10x3x3x1</sets>
+    <weight>185x195x205x275x275x320</weight>
+    <rest>1min b/t sets</rest>
+  </workout>
+
+  <workout>
+    <exercise>Incline Dumbbell Press</exercise>
+    <sets>15x12x10x8x6x4</sets>
+    <weight>50x55x60x65x70x80</weight>
+    <rest>1min b/t sets</rest>
+  </workout>
+
+  <workout>
+    <exercise>Dumbbell Fly</exercise>
+    <sets>15x12x10x8x6x4</sets>
+    <weight>30x35x40x45x45x45</weight>
+    <rest>30sec b/t sets</rest>
+  </workout>
+
+  <workout>
+    <exercise>Decline Bench Press</exercise>
+    <sets>15x12x10x3x3x1</sets>
+    <weight>185x195x205x225x225x240</weight>
+    <rest>45sec b/t sets</rest>
+  </workout>
+</workoutPlan>
